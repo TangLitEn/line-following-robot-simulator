@@ -1,10 +1,12 @@
-from maze import printCurrentMaze
+from maze import printMaze
+from maze import initMaze
+from robot import carDetection
 
-route = [1,2,3,4,5,6,7]
-maze_size_square = 10
+route = [[0,0],[0,1],[0,2],[0,3],[0,4],
+	 [1,1],[2,1],[3,1],[4,1]]
+maze_size_square = 5
 
-for i in range(5):
-	print("hello world")
+maze_array = initMaze(route,maze_size_square)
+printMaze(maze_array,maze_size_square)
 
-printCurrentMaze(route,maze_size_square)
-
+carDetection([2,2],route)
