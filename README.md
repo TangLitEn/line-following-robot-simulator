@@ -1,1 +1,1 @@
-# line-following-robot-simulator
+# line-maze-robot-solver-simulator
