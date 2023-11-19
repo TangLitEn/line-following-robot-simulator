@@ -56,5 +56,7 @@ def carTurn(car_location,direction_array,turn_direction_array):
 		return [car_location, np.dot(np.array([[0,1],[-1,0]]),current).tolist()]
 	elif turn_direction_array == [0,-1]:
 		return [car_location, np.dot(np.array([[-1,0],[0,-1]]),current).tolist()]
+	elif turn_direction_array == [0,1]:
+		return [car_location, [0,1]]
 	else:
 		return False
