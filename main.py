@@ -30,7 +30,7 @@ while choice == 999:
 	print("AVAILABLE METHOD:")
 	print("1. Manual Method")
 	print("2. Depth-First Search")
-	choice = int(input("Please choose your method of solving"))
+	choice = int(input("Please choose your method of solving \n"))
 	print("")
 	if choice not in choices:
 		print("INVALID OPTION")
@@ -128,28 +128,31 @@ if choice == 2:
 				# after turning, immediately move forward
 				current_direction = carTurn(current_car_square,current_direction,available_route[0])[1]
 				current_car_square = carMove(current_car_square,current_direction)[0]
+			print("QUEUE: ",save_route)
 		else: # hit a junction
 			if dead_end_flag == 0:
+				save_route.insert(0,directionEncoding(current_direction,[0,-1])) # the return route
 				for route in available_route:
 					save_route.insert(0,directionEncoding(current_direction,route))
 			else:
 				dead_end_flag = 0 
-		
+			
+			print("QUEUE: ",save_route)
 			go = directionDecoding(current_direction,save_route.pop(0))
 			current_direction = carTurn(current_car_square,current_direction,go)[1]
 			current_car_square = carMove(current_car_square,current_direction)[0]	
 
-		print("==========================================================")
-		maze_array = initMaze(maze_list_array,maze_size_square)	
-		print("QUEUE: ",save_route)
+		maze_array = initMaze(maze_list_array,maze_size_square)
 		print("==========================================================")
 
 		if routeDetection(current_car_square,current_direction,maze_array) == []:	# detect goal end 
 			reach_goal_flag = 1
 
-		t.sleep(1)
+		t.sleep(0.2)
 		maze_array = initMaze(maze_list_array,maze_size_square)	
-		
+
+		#input("")	
+
 		step += 1
 	print("...........⊂(◉‿◉)つ...............")
 	print(".................................")
