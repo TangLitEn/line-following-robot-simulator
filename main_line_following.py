@@ -26,6 +26,7 @@ while step<=termination_step:
 	print("                     STEP: ",step,"                  ")
 	printMaze(maze_array,maze_size_square,current_car_square,current_direction)
 	print("==========================================================")
+	maze_array = initMaze(maze_list_array,maze_size_square)	
 	print("SENSOR DETECTION: ", carDetection(current_car_square,current_direction,maze_array))
 	print("CURRENT AVAILABLE ROUTE: ",available_route)
 	print("CURRENT CAR: ",current_car_square," | CURRENT DIRECTION: ",current_direction)

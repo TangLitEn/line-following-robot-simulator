@@ -1,5 +1,3 @@
-
-
 def initMaze(route,maze_size_square):
 	Maze = []
 	for row in range(maze_size_square):
