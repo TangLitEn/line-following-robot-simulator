@@ -55,13 +55,39 @@ For users interested in navigating their own custom mazes, the system allows eas
 
 Set the `starting_direction` variable to one of these values to indicate the initial orientation of the robot.
 
+## Interface Explanation
+
+### Step Counter
+The `STEP` represents the number of movements or actions taken by the robot car since the start of the navigation process. Each step can be a move or a turn.
+
+### Sensor Detection
+The `SENSOR DETECTION` array represents what the robot car is currently detecting in its immediate surroundings. It's an array that corresponds to the sensors labeled `[A, B, C, L, O, R]`:
+- `A`, `B`, `C` represent the three sensors in front of the robot detecting obstacles or paths.
+- `L` and `R` are the left and right side sensors, respectively.
+- `O` represents the current position of the robot.
+
+The values in the array will be 'X' if an obstacle is detected in that direction or ' ' (space) if the path is clear.
+
+### Current Available Route
+The `CURRENT AVAILABLE ROUTE` shows the possible directions the robot can move towards from its current position, based on the robot's viewing direction. The directions are encoded relative to the robot's current orientation:
+- `[0, 1]` means straight ahead.
+- `[0, -1]` means directly behind.
+- `[-1, 0]` means to the left.
+- `[1, 0]` means to the right.
+
+These options are derived from the sensor readings and help decide the next move in the navigation algorithm.
+
+### Visualization
+Below is an example of the robot's view at step 24, with the sensor detections and available routes:
+
+![Line Maze Robot Solver View at Step 24](https://github.com/TangLitEn/line-maze-robot-solver-simulator/assets/65808174/105131b2-9a06-4c2d-9aa3-0097ca5db927)
+
 ## Implemented Algorithms
 The Line Maze Robot Solver incorporates two types of algorithms for navigating through mazes:
 
 1. **Manual Method**: This method allows users to manually navigate the maze. The user can make decisions at each step, choosing which direction to move based on the available routes. This method is interactive and suitable for users who wish to manually explore the maze-solving process.
 
 2. **DFS (Depth-First Search) Method**: This algorithm automatically navigates through the maze using a depth-first search approach. It explores as far as possible along each branch before backtracking, efficiently finding a path through the maze. This method is effective for programmatically solving mazes, showcasing the application of DFS in algorithmic problem-solving.
-
 
 ## Contributing
 Contributions to this project are welcome. Please follow the standard fork-branch-pull request workflow. Make sure to update tests as appropriate and adhere to the existing coding style.
