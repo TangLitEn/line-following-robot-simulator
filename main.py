@@ -1,4 +1,4 @@
-from maze import printMaze
+from maze import outputMazeString
 from maze import initMaze
 from maze import directionEncoding
 from maze import directionDecoding
@@ -6,6 +6,9 @@ from robot import routeDetection
 from robot import carDetection
 from robot import carMove
 from robot import carTurn
+from supporting_function import printAndWrite
+from supporting_function import writeToFile
+from datetime import datetime
 import maze_list
 import time as t
 
@@ -21,9 +24,11 @@ current_direction = starting_direction
 choices = [1,2]
 choice = 999
 
+output_file_name = "Manual_solving.txt"
+
 print("==========================================================")
 print("=		  INTIALIZING MAP			=")
-printMaze(maze_array,maze_size_square,current_car_square,current_direction)
+print(outputMazeString(maze_array,maze_size_square,current_car_square,current_direction))
 print("==========================================================")
 
 while choice == 999:
@@ -47,7 +52,7 @@ if choice == 1:
 		available_route = routeDetection(current_car_square,current_direction,maze_array)
 		print("==========================================================")
 		print("                     STEP: ",step,"                  ")
-		printMaze(maze_array,maze_size_square,current_car_square,current_direction)
+		print(outputMazeString(maze_array,maze_size_square,current_car_square,current_direction))
 		print("==========================================================")
 		maze_array = initMaze(maze_list_array,maze_size_square)	
 		print("SENSOR DETECTION: ", carDetection(current_car_square,current_direction,maze_array))
@@ -113,7 +118,7 @@ if choice == 2:
 		maze_array = initMaze(maze_list_array,maze_size_square)	
 		print("==========================================================")
 		print("                     STEP: ",step,"                  ")
-		printMaze(maze_array,maze_size_square,current_car_square,current_direction)
+		print(outputMazeString(maze_array,maze_size_square,current_car_square,current_direction))
 		print("==========================================================")
 		maze_array = initMaze(maze_list_array,maze_size_square)	
 		print("SENSOR DETECTION: ", carDetection(current_car_square,current_direction,maze_array))

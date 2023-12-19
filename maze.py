@@ -33,8 +33,10 @@ def directionDecoding(current_direction,encoded_direction_array):
 	elif current_direction == [0,1]:
 		return encoded_direction_array # no decoding
 
-def printMaze(Maze_Array,maze_size_square,car_location_array,car_direction_array):
+def outputMazeString(Maze_Array,maze_size_square,car_location_array,car_direction_array):
 	car_location = car_location_array
+
+	outputString = ""
 
 	#layering maze array
 	X = car_direction_array[0]
@@ -51,9 +53,10 @@ def printMaze(Maze_Array,maze_size_square,car_location_array,car_direction_array
 
 	for row in range(0,maze_size_square):
 		for column in range(0,maze_size_square):
-			print(layered_maze_array[row][column],end="")
-		print("\n")
-
+			outputString += layered_maze_array[row][column]
+		outputString += "\n"
+	
+	return outputString
 # print(directionEncoding([1,0],[-1,0]))
 # print(directionEncoding([-1,0],[-1,0]))
 # print(directionEncoding([0,1],[1,0]))
